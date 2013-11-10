@@ -30,7 +30,6 @@
         "symfony/filesystem": "~2.3",
         "symfony/finder": "~2.3",
         "monolog/monolog": "~1.6",
-        "whatthejeff/nyancat-scoreboard": "1.1.*@dev",
         "xPaw/PHP-Source-Query-Class": "master"
     },
     "require-dev": {
