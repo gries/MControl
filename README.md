@@ -68,8 +68,8 @@ Building structures
         $structureBuilder->build($structure);
 
 
-Currently these Commands are available
---------------------------------------
+Currently these Commands are available for the Commander
+-------------------------------------------------------
 
 - say
 - listPlayers
@@ -78,6 +78,7 @@ Currently these Commands are available
 - give
 - setWeather
 - setTime
+- setBlock
 
 
 Running the tests
