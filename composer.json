@@ -1,5 +1,5 @@
 {
-    "name":         "gries/MControl",
+    "name":         "gries/mcontrol",
     "description":  "PHP Library to controll a running Minecraft-Server",
     "keywords":     ["Minecraft", "Admin"],
     "type":         "library",
