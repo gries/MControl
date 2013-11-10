@@ -1,0 +1,43 @@
+{
+    "name":         "gries/MControl",
+    "description":  "PHP Library to controll a running Minecraft-Server",
+    "keywords":     ["Minecraft", "Admin"],
+    "type":         "library",
+    "authors":      [
+        {
+            "name":      "Christoph Rosse",
+            "email":     "christoph@rosse.at"
+        }
+    ],
+    "repositories": [
+     {
+            "type":"package",
+            "package": {
+                "name": "xPaw/PHP-Source-Query-Class",
+                "version":"master",
+                "source": {
+                    "url": "https://github.com/xPaw/PHP-Source-Query-Class.git",
+                    "type": "git",
+                    "reference":"master"
+                },
+                "autoload": {
+                    "classmap": ["/"]
+                }
+            }
+        }
+    ],
+    "require": {
+        "symfony/filesystem": "~2.3",
+        "symfony/finder": "~2.3",
+        "monolog/monolog": "~1.6",
+        "whatthejeff/nyancat-scoreboard": "1.1.*@dev",
+        "xPaw/PHP-Source-Query-Class": "master"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "2.0.*@dev"
+    },
+    "autoload": {
+        "psr-0": {"gries\\MControl": "src/"}
+    },
+    "minimum-stability": "dev"
+}
