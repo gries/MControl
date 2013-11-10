@@ -57,8 +57,7 @@ Building structures
         $structure = new Structure();
 
         // add some blocks
-        // in this case build a sand tower that is five block high
-
+        // in this case build a sand tower that is five blocks high
         for ($i = 0; $i < 5; $i++)
         {
             $block = new Block('sand', array('x' => 1, 'y' => $i, 'z' => 1));
