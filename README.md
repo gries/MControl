@@ -41,6 +41,34 @@ Basic usage
     // locate a player
     $location = $commander->locate('playerx');  // -> array('x' => 157, 'y' => 50, 'z' => -54);
 
+Building structures
+-------------------
+
+        ....
+        use gries\MControl\Builder\Block;
+        use gries\MControl\Builder\Structure;
+        use gries\MControl\Server\StructureBuilder;
+        ...
+
+        // create a structure-builder
+        $structureBuilder = new StructureBuilder($commander);
+
+        // create a new structure
+        $structure = new Structure();
+
+        // add some blocks
+        // in this case build a sand tower that is five block high
+
+        for ($i = 0; $i < 5; $i++)
+        {
+            $block = new Block('sand', array('x' => 1, 'y' => $i, 'z' => 1));
+            $structure->addBlock($block);
+        }
+
+        // build it on the server
+        $structureBuilder->build($structure);
+
+
 Currently these Commands are available
 --------------------------------------
 
