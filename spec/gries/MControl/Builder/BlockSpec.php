@@ -30,4 +30,11 @@ class BlockSpec extends ObjectBehavior
             ->during('__construct', array('some_name', array('x' => 15, 'y' => 'not on my watch')))
         ;
     }
+
+    function it_returns_a_single_coordinate()
+    {
+        $this->beConstructedWith('iron_block', array('x' => 1, 'y' => -2, 'z' => 3));
+
+        $this->getCoordinate('x')->shouldReturn(1);
+    }
 }

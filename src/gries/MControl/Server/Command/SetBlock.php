@@ -10,21 +10,15 @@ class SetBlock implements Command
 
     const SET_METHOD_DELETE = 'delete';
 
-    protected $x;
-
-    protected $y;
-
-    protected $z;
+    protected $coordinates;
 
     protected $blockType;
 
     protected $method;
 
-    public function __construct($x, $y, $z, $blockType, $method)
+    public function __construct($blockType, array $coordinates, $method)
     {
-        $this->x = $x;
-        $this->y = $y;
-        $this->z = $z;
+        $this->coordinates = $coordinates;
         $this->blockType = $blockType;
         $this->method = $method;
     }
@@ -33,9 +27,9 @@ class SetBlock implements Command
     {
         return sprintf(
             'setblock %d %d %d %s 0 %s',
-            $this->x,
-            $this->y,
-            $this->z,
+            $this->coordinates['x'],
+            $this->coordinates['y'],
+            $this->coordinates['z'],
             $this->blockType,
             $this->method
         );

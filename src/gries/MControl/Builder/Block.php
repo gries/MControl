@@ -16,6 +16,30 @@ class Block
 
     protected $coordinates;
 
+    /**
+     * @param array $coordinates
+     */
+    public function setCoordinates($coordinates)
+    {
+        $this->coordinates = $coordinates;
+    }
+
+    /**
+     * @return array
+     */
+    public function getCoordinates()
+    {
+        return $this->coordinates;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
     public function __construct($type, array $coordinates)
     {
         $this->validateCoordinate('x', $coordinates);
@@ -45,5 +69,10 @@ class Block
         {
             throw new \InvalidArgumentException(sprintf('Coordinate "%s" has to be numeric.', $coordinate));
         }
+    }
+
+    public function getCoordinate($coordinate)
+    {
+        return $this->coordinates[$coordinate];
     }
 }

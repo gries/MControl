@@ -2,6 +2,13 @@
 
 namespace gries\MControl\Builder;
 
+/**
+ * Class Structure
+ *
+ * Represents a collection of Blocks
+ *
+ * @package gries\MControl\Builder
+ */
 class Structure
 {
     protected $blocks = [];

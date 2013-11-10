@@ -1,6 +1,7 @@
 <?php
 namespace gries\MControl\Server;
 
+use gries\MControl\Builder\Block;
 use gries\MControl\Server\Command;
 use gries\MControl\Server\Rcon\RconManager;
 
@@ -63,6 +64,15 @@ class Commander
     public function setTime($time)
     {
         return $this->executeCommand(new Command\SetTime($time));
+    }
+
+    public function setBlock($type, array $coordinates)
+    {
+        $this->executeCommand(new Command\SetBlock(
+            $type,
+            $coordinates,
+            Command\SetBlock::SET_METHOD_REPLACE
+        ));
     }
 
     /**
