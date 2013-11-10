@@ -49,6 +49,10 @@ Currently these Commands are available
 - setTime
 
 
+Running the tests
+-----------------
+    bin/phpspec run
+
 Author
 ------
 
