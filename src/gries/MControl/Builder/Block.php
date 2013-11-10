@@ -2,6 +2,14 @@
 
 namespace gries\MControl\Builder;
 
+
+/**
+ * Class Block
+ *
+ * A single block
+ *
+ * @package gries\MControl\Builder
+ */
 class Block
 {
     protected $type;
