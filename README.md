@@ -3,6 +3,10 @@ MControl
 
 MControl is a library to controll a minecraft-server via. the rcon protocol.
 
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/33bb71fa-7445-42bd-a1e4-02f956b73ccc/big.png)](https://insight.sensiolabs.com/projects/33bb71fa-7445-42bd-a1e4-02f956b73ccc)
+
+[![Build Status](https://travis-ci.org/gries/MControl.png?branch=master)](https://travis-ci.org/gries/MControl)
+
 Installation
 ------------
 
