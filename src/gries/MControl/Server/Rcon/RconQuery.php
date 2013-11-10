@@ -14,21 +14,5 @@ $reflection->setAccessible(true);
  */
 class RconQuery extends \SourceQuery
 {
-//	public function __destruct( )
-//	{
-//		if ($this->isConnected())
-//		{
-//			$this->Disconnect();
-//		}
-//	}
-//
-//    public function setConnected($connected)
-//    {
-//        $this->Connected = $connected;
-//    }
-//
-//	public function isConnected()
-//	{
-//		return $this->Connected;
-//	}
+
 }
