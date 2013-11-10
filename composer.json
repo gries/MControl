@@ -39,5 +39,8 @@
     "autoload": {
         "psr-0": {"gries\\MControl": "src/"}
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "config": {
+        "bin-dir": "bin"
+    }
 }
