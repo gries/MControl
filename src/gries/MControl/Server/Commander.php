@@ -76,7 +76,7 @@ class Commander
 		try {
 
 			return $this->rconManager->execute($command);
-		} catch(RuntimeException $e) {
+		} catch(\RuntimeException $e) {
 
 			return false;
 		}
