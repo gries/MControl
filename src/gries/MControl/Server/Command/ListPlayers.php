@@ -7,20 +7,20 @@ use gries\MControl\Server\Command\ResponseParser\ListPlayersParser;
  */
 class ListPlayers implements Command
 {
-	/**
-	 * (non-PHPdoc)
-	 * @see MControl\Server\Command.Command::getCommandString()
-	 */
-	public function getCommandString()
-	{
-		return 'list';
-	}
+    /**
+     * (non-PHPdoc)
+     * @see MControl\Server\Command.Command::getCommandString()
+     */
+    public function getCommandString()
+    {
+        return 'list';
+    }
 
-	/**
-	 * @return ResponseParser\ResponseParserInterface|null
-	 */
-	public function getResponseParser()
-	{
-		return new ListPlayersParser();
-	}
+    /**
+     * @return ResponseParser\ResponseParserInterface|null
+     */
+    public function getResponseParser()
+    {
+        return new ListPlayersParser();
+    }
 }

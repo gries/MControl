@@ -4,45 +4,45 @@ namespace gries\MControl\Server\Command;
 
 class SetBlock implements Command
 {
-	public static $SET_METHOD_KEEP = 'keep';
+    public static $SET_METHOD_KEEP = 'keep';
 
-	public static $SET_METHOD_REPLACE = 'replace';
+    public static $SET_METHOD_REPLACE = 'replace';
 
-	public static $SET_METHOD_DELETE = 'delete';
+    public static $SET_METHOD_DELETE = 'delete';
 
-	protected $x;
+    protected $x;
 
-	protected $y;
+    protected $y;
 
-	protected $z;
+    protected $z;
 
-	protected $blockType;
+    protected $blockType;
 
-	protected $method;
+    protected $method;
 
     public function __construct($x, $y, $z, $blockType, $method)
     {
         $this->x = $x;
-		$this->y = $y;
-		$this->z = $z;
-		$this->blockType = $blockType;
-		$this->method = $method;
+        $this->y = $y;
+        $this->z = $z;
+        $this->blockType = $blockType;
+        $this->method = $method;
     }
 
     public function getCommandString()
     {
         return sprintf(
-			'setblock %d %d %d %s 0 %s',
-			$this->x,
-			$this->y,
-			$this->z,
-			$this->blockType,
-			$this->method
-		);
+            'setblock %d %d %d %s 0 %s',
+            $this->x,
+            $this->y,
+            $this->z,
+            $this->blockType,
+            $this->method
+        );
     }
 
-	public function getResponseParser()
-	{
-		return null;
-	}
+    public function getResponseParser()
+    {
+        return null;
+    }
 }

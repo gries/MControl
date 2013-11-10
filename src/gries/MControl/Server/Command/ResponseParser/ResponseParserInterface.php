@@ -11,11 +11,11 @@ namespace gries\MControl\Server\Command\ResponseParser;
  */
 interface ResponseParserInterface
 {
-	/**
-	 * Get the Server response
-	 *
-	 * @param array $lines
-	 * @return mixed Response could be a string or an array
-	 */
-	public function getResponse($response);
+    /**
+     * Get the Server response
+     *
+     * @param array $lines
+     * @return mixed Response could be a string or an array
+     */
+    public function getResponse($response);
 }

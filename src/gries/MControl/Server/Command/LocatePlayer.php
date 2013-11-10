@@ -7,8 +7,8 @@ use gries\MControl\Server\Command\ResponseParser\LocatePlayerParser;
 
 class LocatePlayer extends Teleport
 {
-	public function getResponseParser()
-	{
-		return new LocatePlayerParser($this->parameters['subjects'][0]);
-	}
+    public function getResponseParser()
+    {
+        return new LocatePlayerParser($this->parameters['subjects'][0]);
+    }
 }

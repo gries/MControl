@@ -13,7 +13,7 @@ class ListPlayersParserSpec extends ObjectBehavior
 
     function it_should_parse_player_names_from_log_lines()
     {
-    	$this->getResponse('There are 2/20 players online:gries, absolem')
-			->shouldReturn(array('gries', 'absolem'));
+        $this->getResponse('There are 2/20 players online:gries, absolem')
+            ->shouldReturn(array('gries', 'absolem'));
     }
 }

@@ -6,24 +6,24 @@ namespace gries\MControl\Server\Command;
  */
 class Say implements Command
 {
-	public function __construct($text)
-	{
-		$this->parameters['text'] = $text;
-	}
+    public function __construct($text)
+    {
+        $this->parameters['text'] = $text;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getCommandString()
-	{
-		return sprintf('say %s', $this->parameters['text']);
-	}
+    /**
+     * @return string
+     */
+    public function getCommandString()
+    {
+        return sprintf('say %s', $this->parameters['text']);
+    }
 
-	/**
-	 * @return ResponseParser\ResponseParserInterface|null
-	 */
-	public function getResponseParser()
-	{
-		return null;
-	}
+    /**
+     * @return ResponseParser\ResponseParserInterface|null
+     */
+    public function getResponseParser()
+    {
+        return null;
+    }
 }
