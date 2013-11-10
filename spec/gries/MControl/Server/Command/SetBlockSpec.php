@@ -10,7 +10,7 @@ class SetBlockSpec extends ObjectBehavior
 {
     public function let()
     {
-        $this->beConstructedWith(215, 80, 251, 'minecraft:iron_ore', SetBlock::$SET_METHOD_KEEP);
+        $this->beConstructedWith(215, 80, 251, 'minecraft:iron_ore', SetBlock::SET_METHOD_KEEP);
     }
 
     function it_is_initializable()

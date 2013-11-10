@@ -4,11 +4,11 @@ namespace gries\MControl\Server\Command;
 
 class SetBlock implements Command
 {
-    public static $SET_METHOD_KEEP = 'keep';
+    const SET_METHOD_KEEP = 'keep';
 
-    public static $SET_METHOD_REPLACE = 'replace';
+    const SET_METHOD_REPLACE = 'replace';
 
-    public static $SET_METHOD_DELETE = 'delete';
+    const SET_METHOD_DELETE = 'delete';
 
     protected $x;
 
