@@ -64,6 +64,10 @@ Building structures
             $structure->addBlock($block);
         }
 
+        // add a row of 3 sand blocks on the Y axis
+        // starting on 1:1:1
+        $structure->addRow('y', 'sand', 3);
+
         // build it on the server
         $structureBuilder->build($structure);
 

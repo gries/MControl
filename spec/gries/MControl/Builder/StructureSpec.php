@@ -26,6 +26,23 @@ class StructureSpec extends ObjectBehavior
         $this->getBlocks()->shouldHaveValue($block);
     }
 
+    function it_lets_us_add_a_row()
+    {
+        $this->getBlocks()->shouldHaveCount(0);
+
+        $this->addRow('x', 'iron', 3);
+
+        // expected blocks
+        $block1 = new Block('iron', array('x' => 1, 'y' => 1, 'z' => 1));
+        $block2 = new Block('iron', array('x' => 2, 'y' => 1, 'z' => 1));
+        $block3 = new Block('iron', array('x' => 3, 'y' => 1, 'z' => 1));
+
+        $this->getBlocks()->shouldHaveCount(3);
+        $this->getBlocks()->shouldHaveValue($block1);
+        $this->getBlocks()->shouldHaveValue($block2);
+        $this->getBlocks()->shouldHaveValue($block3);
+    }
+
     public function getMatchers()
     {
         return [

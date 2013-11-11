@@ -22,4 +22,15 @@ class Structure
     {
         $this->blocks[] = $block;
     }
+
+    public function addRow($axis, $type, $length, $startingPosition = array('x' => 1, 'y' => 1, 'z' => 1))
+    {
+        for ($i = 0; $i < $length; $i++)
+        {
+            $newPosition = $startingPosition;
+            $newPosition[$axis] += $i;
+            $block = new Block($type, $newPosition);
+            $this->addBlock($block);
+        }
+    }
 }
