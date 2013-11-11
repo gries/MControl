@@ -91,6 +91,7 @@ class RconManager
         $this->port = $port;
         $this->password = $password;
         $this->rcon = new RconQuery();
+        $this->rcon->Connect($this->host, $this->port, 3);
     }
 
     /**
@@ -102,7 +103,6 @@ class RconManager
      */
     public function execute(Command $command)
     {
-        $this->rcon->Connect($this->host, $this->port, 3);
         $this->rcon->SetRconPassword($this->password);
 
         $returnValue = $this->rcon->Rcon($command->getCommandString());
