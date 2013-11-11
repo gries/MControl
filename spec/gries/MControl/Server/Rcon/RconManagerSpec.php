@@ -26,8 +26,6 @@ class RconManagerSpec extends ObjectBehavior
         $command->getCommandString()->willReturn('say hi');
         $command->getResponseParser()->willReturn(null);
 
-
-        $rcon->Connect('localhost', 25575, 3)->shouldBeCalled();
         $rcon->SetRconPassword('p4ssw0rd')->shouldBeCalled();
         $rcon->Rcon('say hi')->shouldBeCalled();
 
