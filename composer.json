@@ -28,8 +28,6 @@
         }
     ],
     "require": {
-        "symfony/filesystem": "~2.3",
-        "symfony/finder": "~2.3",
         "monolog/monolog": "~1.6",
         "xPaw/PHP-Source-Query-Class": "master"
     },
