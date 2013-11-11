@@ -33,4 +33,10 @@ class Structure
             $this->addBlock($block);
         }
     }
+
+    public function createBlock($type, array $coordinates)
+    {
+        $block = new Block($type, $coordinates);
+        $this->addBlock($block);
+    }
 }

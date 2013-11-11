@@ -60,8 +60,7 @@ Building structures
         // in this case build a sand tower that is five blocks high
         for ($i = 0; $i < 5; $i++)
         {
-            $block = new Block('sand', array('x' => 1, 'y' => $i, 'z' => 1));
-            $structure->addBlock($block);
+            $structure->createBlock('sand', array('x' => 1, 'y' => $i, 'z' => 1));
         }
 
         // add a row of 3 sand blocks on the Y axis
