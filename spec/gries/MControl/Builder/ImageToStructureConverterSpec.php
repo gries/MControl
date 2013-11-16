@@ -17,9 +17,9 @@ class ImageToStructureConverterSpec extends ObjectBehavior
     {
         $expectedStructure = new Structure();
         $expectedStructure->createBlock('iron_block', array('x' =>1, 'y' => 1, 'z' => 1));
-        $expectedStructure->createBlock('iron_block', array('x' =>2, 'y' => 1, 'z' => 1));
+        $expectedStructure->createBlock('iron_block', array('x' =>1, 'y' => 1, 'z' => 2));
 
-        $expectedStructure->createBlock('coal_block', array('x' =>1, 'y' => 1, 'z' => 2));
+        $expectedStructure->createBlock('coal_block', array('x' =>2, 'y' => 1, 'z' => 1));
         $expectedStructure->createBlock('coal_block', array('x' =>2, 'y' => 1, 'z' => 2));
 
         // returns a 2x2 image with 2 black and 2 white pixels
@@ -40,9 +40,20 @@ class ImageToStructureConverterSpec extends ObjectBehavior
 
         $draw = new \ImagickDraw();
         $draw->setFillColor(new \ImagickPixel('black'));
+        $draw->color(0, 1, \Imagick::PAINT_POINT );
 
-        $draw->color(1, 2, \Imagick::PAINT_POINT );
+        $draw2 = new \ImagickDraw();
+        $draw2->setFillColor(new \ImagickPixel('black'));
+        $draw2->color(1, 1, \Imagick::PAINT_POINT );
 
-        $image->drawImage( $draw );
+        $image->drawImage($draw);
+        $image->drawimage($draw2);
+
+        $image->setformat('png');
+        $image->writeimage('test.png');
+
+
+
+        return $image;
     }
 }
