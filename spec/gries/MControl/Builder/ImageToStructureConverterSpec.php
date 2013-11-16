@@ -50,9 +50,6 @@ class ImageToStructureConverterSpec extends ObjectBehavior
         $image->drawimage($draw2);
 
         $image->setformat('png');
-        $image->writeimage('test.png');
-
-
 
         return $image;
     }
