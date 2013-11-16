@@ -21,7 +21,12 @@ class ListPlayersParser implements ResponseParserInterface
     {
         $playerNames = strstr($response, 'online:');
         $playerNames = str_replace(array(' ', 'online:'), '', $playerNames);
+        $playerNames = trim($playerNames);
 
-        return explode(',', $playerNames);
+        if (empty($playerNames)) {
+            return array();
+        } else {
+            return explode(',', $playerNames);
+        }
     }
 }
