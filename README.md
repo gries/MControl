@@ -88,6 +88,12 @@ Running the tests
 -----------------
     bin/phpspec run
 
+Contribute!
+-----------
+Feel free to give me feedback/feature-request/bug-reports via. github issues.
+Or just send me a pull-request :)
+
+
 Author
 ------
 
