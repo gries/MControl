@@ -22,8 +22,7 @@ class StructureBuilder
 
     public function build(Structure $structure, array $startingCoordinates)
     {
-        foreach ($structure->getBlocks() as $block)
-        {
+        foreach ($structure->getBlocks() as $block) {
             $this->buildBlock($block, $startingCoordinates);
         }
     }

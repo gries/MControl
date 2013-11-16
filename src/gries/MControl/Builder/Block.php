@@ -60,13 +60,11 @@ class Block
      */
     protected function validateCoordinate($coordinate, $coordinates)
     {
-        if (!isset($coordinates[$coordinate]))
-        {
+        if (!isset($coordinates[$coordinate])) {
             throw new \InvalidArgumentException(sprintf('Missing coordinate: "%s" in block.', $coordinate));
         }
 
-        if (!is_numeric($coordinates[$coordinate]))
-        {
+        if (!is_numeric($coordinates[$coordinate])) {
             throw new \InvalidArgumentException(sprintf('Coordinate "%s" has to be numeric.', $coordinate));
         }
     }

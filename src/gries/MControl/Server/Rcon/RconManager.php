@@ -107,8 +107,7 @@ class RconManager
 
         $returnValue = $this->rcon->Rcon($command->getCommandString());
 
-        if ($parser = $command->getResponseParser())
-        {
+        if ($parser = $command->getResponseParser()) {
             return $parser->getResponse($returnValue);
         }
 
