@@ -29,6 +29,7 @@
     ],
     "require": {
         "monolog/monolog": "~1.6",
+        "doctrine/orm": "~2.4",
         "xPaw/PHP-Source-Query-Class": "master"
     },
     "require-dev": {
