@@ -1,6 +1,5 @@
 <?php
 namespace gries\MControl\Server\Command;
-use gries\MControl\Server\Command\ResponseParser\LocatePlayerParser;
 
 /**
  * Represents a "TP" Command that teleports a player to another player or some given coordinates

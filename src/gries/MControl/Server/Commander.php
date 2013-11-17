@@ -1,7 +1,6 @@
 <?php
 namespace gries\MControl\Server;
 
-use gries\MControl\Builder\Block;
 use gries\MControl\Server\Command;
 use gries\MControl\Server\Rcon\RconManager;
 
