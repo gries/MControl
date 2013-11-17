@@ -3,6 +3,7 @@
 namespace spec\gries\MControl\Server\Rcon;
 
 use gries\MControl\Server\Command\Say;
+use gries\MControl\Server\Rcon\RconQuery;
 use PhpSpec\ObjectBehavior;
 
 
@@ -15,11 +16,12 @@ class RconManagerSpec extends ObjectBehavior
         $this->shouldHaveType('gries\MControl\Server\Rcon\RconManager');
     }
 
+
     /**
-     * @param gries\MControl\Server\Command\Say $command
-     * @param gries\MControl\Server\Rcon\RconQuery $rcon
+     * @param gries\MControl\Server\Command\Say     $command
+     * @param gries\MControl\Server\Rcon\RconQuery  $rcon
      */
-    function it_should_execute_a_command_via_rcon($command, $rcon)
+    function it_should_execute_a_command_via_rcon(Say $command, RconQuery $rcon)
     {
         $this->beConstructedWith('localhost', 25575, 'p4ssw0rd');
 
