@@ -26,27 +26,29 @@ class ImageToStructureConverter
      *
      * @return Structure
      */
-    public function convert(\Imagick $image)
+    public function convert(\Imagick $image, $heigh = 1)
     {
         $structure = new Structure();
-        $iterator  = $image->getPixelIterator();
+        $pixelIterator  = $image->getPixelIterator();
 
-        $z = 1;
-        $x = 1;
-        $y = 1;
-
-        foreach ($iterator as $row => $pixels)
+        for ($y = 1; $y <= $heigh; $y++)
         {
-            $rowZ = $z;
+            $z = 1;
+            $x = 1;
 
-            foreach ($pixels as $column => $pixel)
+            foreach ($pixelIterator as $pixels)
             {
-                $this->addBlockForPixel($pixel, $structure, $x, $y, $rowZ);
-                $rowZ++;
-            }
+                $rowZ = $z;
 
-            $x++;
-            $iterator->syncIterator();
+                foreach ($pixels as $pixel)
+                {
+                    $this->addBlockForPixel($pixel, $structure, $x, $y, $rowZ);
+                    $rowZ++;
+                }
+
+                $x++;
+                $pixelIterator->syncIterator();
+            }
         }
 
         return $structure;

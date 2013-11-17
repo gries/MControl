@@ -33,6 +33,28 @@ class ImageToStructureConverterSpec extends ObjectBehavior
         ;
     }
 
+    function it_creates_multiple_levels_of_the_image_depending_on_the_given_heigh()
+    {
+        $expectedStructure = new Structure();
+        $expectedStructure->createBlock('iron_block', array('x' =>1, 'y' => 1, 'z' => 1));
+        $expectedStructure->createBlock('iron_block', array('x' =>1, 'y' => 1, 'z' => 2));
+        $expectedStructure->createBlock('coal_block', array('x' =>2, 'y' => 1, 'z' => 1));
+        $expectedStructure->createBlock('coal_block', array('x' =>2, 'y' => 1, 'z' => 2));
+        $expectedStructure->createBlock('iron_block', array('x' =>1, 'y' => 2, 'z' => 1));
+        $expectedStructure->createBlock('iron_block', array('x' =>1, 'y' => 2, 'z' => 2));
+        $expectedStructure->createBlock('coal_block', array('x' =>2, 'y' => 2, 'z' => 1));
+        $expectedStructure->createBlock('coal_block', array('x' =>2, 'y' => 2, 'z' => 2));
+        // returns a 2x2 image with 2 black and 2 white pixels
+        $image = $this->getImage();
+
+        $this->setWhiteBlockType('iron_block');
+        $this->setBlackBlockType('coal_block');
+
+        $this->convert($image, 2)
+            ->shouldBeLike($expectedStructure)
+        ;
+    }
+
     protected function getImage()
     {
         $image = new \Imagick();
