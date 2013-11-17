@@ -4,7 +4,7 @@ namespace spec\gries\MControl\Builder;
 
 use gries\MControl\Builder\Block;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
+
 
 class StructureSpec extends ObjectBehavior
 {

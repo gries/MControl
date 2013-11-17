@@ -4,7 +4,7 @@ namespace spec\gries\MControl\Builder;
 
 use gries\MControl\Builder\Structure;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
+
 
 class ImageToStructureConverterSpec extends ObjectBehavior
 {

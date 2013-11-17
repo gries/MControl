@@ -3,7 +3,7 @@
 namespace spec\gries\MControl\Server\Rcon;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
+
 
 class RconQuerySpec extends ObjectBehavior
 {

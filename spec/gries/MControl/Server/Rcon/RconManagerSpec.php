@@ -4,7 +4,7 @@ namespace spec\gries\MControl\Server\Rcon;
 
 use gries\MControl\Server\Command\Say;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
+
 
 /** @noinspection PhpUndefinedClassInspection */
 class RconManagerSpec extends ObjectBehavior

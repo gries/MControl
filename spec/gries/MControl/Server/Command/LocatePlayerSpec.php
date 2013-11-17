@@ -3,7 +3,7 @@
 namespace spec\gries\MControl\Server\Command;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
+
 
 class LocatePlayerSpec extends ObjectBehavior
 {

@@ -4,7 +4,7 @@ namespace spec\gries\MControl\Server\Command;
 
 use gries\MControl\Server\Command\SetBlock;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
+
 
 class SetBlockSpec extends ObjectBehavior
 {

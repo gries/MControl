@@ -6,7 +6,7 @@ use gries\MControl\Builder\Block;
 use gries\MControl\Builder\Structure;
 use gries\MControl\Server\Commander;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
+
 
 class StructureBuilderSpec extends ObjectBehavior
 {
