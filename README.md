@@ -75,7 +75,7 @@ Converting images to Structures
 To convert images to structures the imagick extension for PHP is required.
 
 The example below will build a structure that is 5 blocks high, and is made of air and leaves.
-Every black pixel will be leaves every white pixel will be air.
+Every black pixel will be leaves every white pixel will be air. The structure will be placed on x -> 33, z -> 19
 
 The result can be seen in this video: https://vimeo.com/79598411
 
