@@ -44,31 +44,52 @@ Basic usage
 Building structures
 -------------------
 
-        ....
-        use gries\MControl\Builder\Block;
-        use gries\MControl\Builder\Structure;
-        use gries\MControl\Server\StructureBuilder;
-        ...
+    ....
+    use gries\MControl\Builder\Block;
+    use gries\MControl\Builder\Structure;
+    use gries\MControl\Server\StructureBuilder;
+    ...
 
-        // create a structure-builder
-        $structureBuilder = new StructureBuilder($commander);
+    // create a structure-builder
+    $structureBuilder = new StructureBuilder($commander);
 
-        // create a new structure
-        $structure = new Structure();
+    // create a new structure
+    $structure = new Structure();
 
-        // add some blocks
-        // in this case build a sand tower that is five blocks high
-        for ($i = 0; $i < 5; $i++)
-        {
-            $structure->createBlock('sand', array('x' => 1, 'y' => $i, 'z' => 1));
-        }
+    // add some blocks
+    // in this case build a sand tower that is five blocks high
+    for ($i = 0; $i < 5; $i++)
+    {
+        $structure->createBlock('sand', array('x' => 1, 'y' => $i, 'z' => 1));
+    }
 
-        // add a row of 3 sand blocks on the Y axis
-        // starting on 1:1:1
-        $structure->addRow('y', 'sand', 3);
+    // add a row of 3 sand blocks on the Y axis
+    // starting on 1:1:1
+    $structure->addRow('y', 'sand', 3);
 
-        // build it on the server
-        $structureBuilder->build($structure);
+    // build it on the server
+    $structureBuilder->build($structure);
+
+Converting images to Structures
+-------------------------------
+To convert images to structures the imagick extension for PHP is required.
+
+The example below will build a structure that is 5 blocks high, and is made of air and leaves.
+Every black pixel will be leaves every white pixel will be air.
+
+The result can be seen in this video: https://vimeo.com/79598411
+
+    $converter = new ImageToStructureConverter();
+    $converter->setBlackBlockType('leaves');
+    $converter->setWhiteBlockType('air');
+
+    $image     = new Imagick('test.png');
+    $structure = $converter->convert($image, 5);
+    $structureBuilder->build($structure,
+        array('x' => '-33',
+              'y' => '3',
+              'z' => '19')
+    );
 
 
 Currently these Commands are available for the Commander
