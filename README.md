@@ -91,6 +91,30 @@ The result can be seen in this video: https://vimeo.com/79598411
               'z' => '19')
     );
 
+Saving structures for further use
+---------------------------------
+You can persist structures for later use using the StructureRepository.
+Currently this Repository uses a sqlite database to store the data by default,
+this behavior can be easily changed by creating a custom EntityManager by yourself
+and passing it to the StructureRepositoryFactory.
+
+    // bootstrap doctrine
+    $entityManager = require_once __DIR__ . '/bootstrap.php';
+
+    // create a repository
+    $factory = new StructureRepositoryFactory();
+    $repository = $factory->create($entityManager);
+
+    // create a new structure
+    $structure = new Structure();
+    $structure->createBlock('iron', array('x' => 1, 'y' => 1, 'z' => 1));
+    $structure->setName('greatness');
+
+    // save it to the database
+    $repository->add($structure);
+
+    // get it from the database
+    $repository->getByName('greatness');
 
 Currently these Commands are available for the Commander
 -------------------------------------------------------
