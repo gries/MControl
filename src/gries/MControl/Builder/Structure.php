@@ -15,10 +15,10 @@ class Structure
     /** @Id @Column(type="integer") @GeneratedValue **/
     protected $id;
 
-    /** @Column(type="json_array") **/
+    /** @Column(type="array") **/
     protected $blocks = [];
 
-    /** @Column(type="string") **/
+    /** @Column(type="string", unique=true) **/
     protected $name;
 
     /**
