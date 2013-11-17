@@ -34,6 +34,9 @@
     "require-dev": {
         "phpspec/phpspec": "2.0.*@dev"
     },
+    "suggest": {
+        "ext-imagick": "To use the ImageToStructureConverter the Imagick extension for php is required."
+    },
     "autoload": {
         "psr-0": {"gries\\MControl": "src/"}
     },
