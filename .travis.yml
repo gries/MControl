@@ -7,7 +7,7 @@ php:
 before_script:
   - wget http://getcomposer.org/composer.phar
   - php composer.phar --prefer-source --dev install
-  - printf "\n" | pecl install apc
+  - printf "\n" | pecl install imagick
 
 script:
   - bin/phpspec run
