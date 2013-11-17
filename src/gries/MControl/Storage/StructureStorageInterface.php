@@ -1,10 +1,18 @@
 <?php
 
-namespace gries\Storage;
+namespace gries\MControl\Storage;
 
 
 use gries\MControl\Builder\Structure;
 
+/**
+ * Interface StructureStorageInterface
+ *
+ * This Interface defines the way structures can be persisted and loaded
+ * from a storage.
+ *
+ * @package gries\MControl\Storage
+ */
 interface StructureStorageInterface
 {
     /**
