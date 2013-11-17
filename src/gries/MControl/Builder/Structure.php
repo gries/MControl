@@ -13,6 +13,9 @@ class Structure
 {
     protected $blocks = [];
 
+    protected $name;
+
+
     public function getBlocks()
     {
         return $this->blocks;
@@ -38,5 +41,15 @@ class Structure
     {
         $block = new Block($type, $coordinates);
         $this->addBlock($block);
+    }
+
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    public function getName()
+    {
+        return $this->name;
     }
 }
