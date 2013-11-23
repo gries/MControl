@@ -30,7 +30,8 @@
     "require": {
         "monolog/monolog": "~1.6",
         "doctrine/orm": "~2.4",
-        "xPaw/PHP-Source-Query-Class": "master"
+        "xPaw/PHP-Source-Query-Class": "master",
+        "symfony/dom-crawler": "~2.4"
     },
     "require-dev": {
         "phpspec/phpspec": "2.0.*@dev"

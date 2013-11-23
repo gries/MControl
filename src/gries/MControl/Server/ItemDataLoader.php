@@ -1,52 +1,59 @@
 <?php
 namespace gries\MControl\Server;
 
+use gries\MControl\Builder\BlockType;
+use gries\MControl\Storage\BlockType\BlockTypeRepository;
 use Symfony\Component\DomCrawler\Crawler;
 
 class ItemDataLoader
 {
     protected $loadUrl;
-    protected $savePath;
+    protected $blockTypeRepository;
 
-    public function __construct($loadUrl, $savePath)
+    public function __construct($loadUrl, BlockTypeRepository $blockTypeRepository)
     {
         $this->loadUrl = $loadUrl;
-        $this->savePath = $savePath;
+        $this->blockTypeRepository = $blockTypeRepository;
     }
 
     public function loadAndSave()
     {
-        $response = json_decode(file_get_contents('http://minecraft.gamepedia.com/api.php?format=json&action=parse&prop=text&title=Data_values&text={{%3AData+values%2FBlock+IDs}}'));
+        $response = json_decode(file_get_contents($this->loadUrl));
 
 
         $items = array();
         $name = '*';
 
         $this->parseItems('//table[1]/tr', $response->parse->text->$name, $items);
-//        $this->parseItems('//div[3]/div[3]/div[4]/table[3]/tr', $html, $items);
-//        $this->parseItems('//div[3]/div[3]/div[4]/table[4]/tr', $html, $items);
-//        $this->parseItems('//div[3]/div[3]/div[4]/table[5]/tr', $html, $items);
-//        $this->parseItems('//div[3]/div[3]/div[4]/table[6]/tr', $html, $items);
-//
-//        $this->parseItems('//div[3]/div[3]/div[4]/table[7]/tr', $html, $items);
-//        $this->parseItems('//div[3]/div[3]/div[4]/table[8]/tr', $html, $items);
-//        $this->parseItems('//div[3]/div[3]/div[4]/table[9]/tr', $html, $items);
-//        $this->parseItems('//div[3]/div[3]/div[4]/table[10]/tr', $html, $items);
-//        $this->parseItems('//div[3]/div[3]/div[4]/table[11]/tr', $html, $items);
+        $this->parseItems('//table[2]/tr', $response->parse->text->$name, $items);
+        $this->parseItems('//table[3]/tr', $response->parse->text->$name, $items);
+        $this->parseItems('//table[4]/tr', $response->parse->text->$name, $items);
+        $this->parseItems('//table[6]/tr', $response->parse->text->$name, $items);
+        $this->parseItems('//table[6]/tr', $response->parse->text->$name, $items);
+        $this->parseItems('//table[7]/tr', $response->parse->text->$name, $items);
+        $this->parseItems('//table[8]/tr', $response->parse->text->$name, $items);
+        $this->parseItems('//table[9]/tr', $response->parse->text->$name, $items);
+        $this->parseItems('//table[10]/tr', $response->parse->text->$name, $items);
+        $this->parseItems('//table[11]/tr', $response->parse->text->$name, $items);
 
         $this->save($items);
     }
 
-    public function getSavedData()
-    {
-        if (file_exists($this->savePath)) {
-            return unserialize(file_get_contents($this->savePath));
-        }
-    }
-
     protected function save(array $items)
     {
-        file_put_contents($this->savePath, serialize($items));
+        foreach ($items as $item)
+        {
+            if (!$blockType = $this->blockTypeRepository->getByName($item['name']))
+            {
+                $blockType = new BlockType($item);
+            }
+            else
+            {
+                $blockType->updateData($item);
+            }
+
+            $this->blockTypeRepository->add($blockType);
+        }
     }
 
     protected function parseItems($xpath, $html, &$items)
@@ -55,7 +62,6 @@ class ItemDataLoader
         $crawler->addHtmlContent($html);
 
         foreach ($crawler->filterXPath($xpath) as $tr) {
-            echo '.';
             $item = array();
 
             $tds = $tr->getElementsByTagName('td');
@@ -71,7 +77,18 @@ class ItemDataLoader
                 $name->removeChild($sup);
             }
             $item['name'] = $item['label'] = str_replace(array("\n", "'"), '', $name->nodeValue);
-            $item['title'] = $tds->item(4)->nodeValue;
+
+            /** @var \DOMElement $tds */
+
+            if ($tds->item(4)->getElementsByTagName('a')->length > 0) {
+                $title = $tds->item(4)->getElementsByTagName('a')->item(0)->getAttribute('title');
+            }
+            else
+            {
+                continue;
+            }
+
+            $item['title'] = $title;
 
             $items[] = $item;
         }

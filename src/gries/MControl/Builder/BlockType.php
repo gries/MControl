@@ -19,22 +19,12 @@ class BlockType
     /** @Column(type="string", unique=true) **/
     protected $name;
 
-    /** @Column(type="string", unique=true) **/
+    /** @Column(type="string", unique=false) **/
     protected $title;
 
     public function __construct(array $data)
     {
-        if (isset($data['id'])) {
-            $this->id = $data['id'];
-        }
-
-        if (isset($data['name'])) {
-            $this->name = $data['name'];
-        }
-
-        if (isset($data['title'])) {
-            $this->title = $data['title'];
-        }
+        $this->updateData($data);
     }
 
     public function getId()
@@ -50,5 +40,20 @@ class BlockType
     public function getTitle()
     {
         return $this->title;
+    }
+
+    public function updateData(array $data)
+    {
+        if (isset($data['id'])) {
+            $this->id = $data['id'];
+        }
+
+        if (isset($data['name'])) {
+            $this->name = $data['name'];
+        }
+
+        if (isset($data['title'])) {
+            $this->title = $data['title'];
+        }
     }
 }

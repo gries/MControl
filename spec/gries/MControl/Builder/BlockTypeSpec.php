@@ -25,4 +25,23 @@ class BlockTypeSpec extends ObjectBehavior
         $this->getName()->shouldBe('minecraft:iron_ore');
         $this->getTitle()->shouldBe('Iron Ore');
     }
+
+    function it_updates_its_data_if_new_data_is_passed()
+    {
+        $this->beConstructedWith(array(
+            'id' => 15,
+            'name' => 'minecraft:iron_ore',
+            'title' => 'Iron Ore'
+        ));
+
+        $this->updateData(array(
+            'id' => 16,
+            'name' => 'minecraft:iron',
+            'title' => 'Iron'
+        ));
+
+        $this->getId()->shouldBe(16);
+        $this->getName()->shouldBe('minecraft:iron');
+        $this->getTitle()->shouldBe('Iron');
+    }
 }
