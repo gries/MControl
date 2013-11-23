@@ -2,7 +2,6 @@
 namespace gries\MControl\Storage\Structure;
 
 use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\Tools\Setup;
 
 class StructureRepositoryFactory
 {
