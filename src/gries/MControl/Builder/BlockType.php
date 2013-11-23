@@ -10,7 +10,10 @@ namespace gries\MControl\Builder;
  */
 class BlockType
 {
-    /** @Column(type="integer", unique=true) **/
+    /**
+     * @Id
+     * @Column(type="integer", unique=true) *
+     */
     protected $id;
 
     /** @Column(type="string", unique=true) **/
