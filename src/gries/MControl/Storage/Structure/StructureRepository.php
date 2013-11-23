@@ -1,6 +1,6 @@
 <?php
 
-namespace gries\MControl\Storage;
+namespace gries\MControl\Storage\Structure;
 
 use gries\MControl\Builder\Structure;
 

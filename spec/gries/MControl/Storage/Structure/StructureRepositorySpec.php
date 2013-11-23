@@ -3,7 +3,7 @@
 namespace spec\gries\MControl\Storage;
 
 use gries\MControl\Builder\Structure;
-use gries\MControl\Storage\StructureStorageInterface;
+use gries\MControl\Storage\Structure\StructureStorageInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -20,7 +20,7 @@ class StructureRepositorySpec extends ObjectBehavior
 
 
     /**
-     * @param gries\MControl\Storage\StructureStorageInterface $storage
+     * @param gries\MControl\Storage\Structure\StructureStorageInterface $storage
      * @param gries\MControl\Builder\Structure $structure
      */
     function it_should_add_a_structure_to_the_storage(StructureStorageInterface $storage, Structure $structure)
@@ -33,7 +33,7 @@ class StructureRepositorySpec extends ObjectBehavior
     }
 
     /**
-     * @param gries\MControl\Storage\StructureStorageInterface $storage
+     * @param gries\MControl\Storage\Structure\StructureStorageInterface $storage
      * @param gries\MControl\Builder\Structure $structure
      */
     function it_should_get_a_structure_by_its_name(StructureStorageInterface $storage, Structure $structure)

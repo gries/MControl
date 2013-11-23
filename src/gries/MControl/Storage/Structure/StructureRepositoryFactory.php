@@ -1,5 +1,5 @@
 <?php
-namespace gries\MControl\Storage;
+namespace gries\MControl\Storage\Structure;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Setup;

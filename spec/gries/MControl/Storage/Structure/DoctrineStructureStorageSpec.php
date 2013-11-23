@@ -1,9 +1,7 @@
 <?php
 
-namespace spec\gries\MControl\Storage;
+namespace spec\gries\MControl\Storage\Structure;
 
-use Doctrine\ORM\EntityManager;
-use gries\MControl\Builder\Structure;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -17,7 +15,7 @@ class DoctrineStructureStorageSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('gries\MControl\Storage\DoctrineStructureStorage');
-        $this->shouldImplement('gries\MControl\Storage\StructureStorageInterface');
+        $this->shouldHaveType('gries\MControl\Storage\Structure\DoctrineStructureStorage');
+        $this->shouldImplement('gries\MControl\Storage\Structure\StructureStorageInterface');
     }
 }
