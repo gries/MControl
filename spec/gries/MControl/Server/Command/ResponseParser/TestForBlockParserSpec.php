@@ -31,4 +31,10 @@ class TestForBlockParserSpec extends ObjectBehavior
         $this->getResponse('The block at 672,5,-1370 is Wooden Planks (expected: Iron Ore).')
             ->shouldReturn('Wooden Planks');
     }
+
+    function it_returns_the_blocks_meta_index()
+    {
+        $this->getResponse('The block at 672,5,-1370 had the data value of 4 (expected: 0).')
+            ->shouldReturn('4');
+    }
 }
