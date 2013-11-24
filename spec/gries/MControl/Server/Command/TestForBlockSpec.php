@@ -23,10 +23,12 @@ class TestForBlockSpec extends ObjectBehavior
     function it_generate_correct_command_string(BlockType $blockType)
     {
         $blockType->getName()->shouldBeCalled()->willReturn('minecraft:iron');
+        $blockType->getMeta()->shouldBeCalled()->willReturn(5);
+
         $this->beConstructedWith(array('x' => 1, 'y' => 1, 'z' => 1), $blockType);
 
         $this->getCommandString()
-            ->shouldReturn('testforblock 1 1 1 minecraft:iron')
+            ->shouldReturn('testforblock 1 1 1 minecraft:iron 5')
         ;
     }
 }

@@ -21,11 +21,12 @@ class TestForBlock implements Command
     public function getCommandString()
     {
         return sprintf(
-            'testforblock %s %s %s %s',
+            'testforblock %s %s %s %s %s',
             $this->coordinates['x'],
             $this->coordinates['y'],
             $this->coordinates['z'],
-            $this->blockType->getName()
+            $this->blockType->getName(),
+            $this->blockType->getMeta()
         );
     }
 
