@@ -68,9 +68,9 @@ class Structure
      *
      * @return Structure
      */
-    public function createBlock($type, array $coordinates)
+    public function createBlock($type, array $coordinates, $meta = 0)
     {
-        $block = new Block($type, $coordinates);
+        $block = new Block($type, $coordinates, $meta);
         $this->addBlock($block);
 
         return $this;

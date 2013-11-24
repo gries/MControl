@@ -49,7 +49,19 @@ class StructureSpec extends ObjectBehavior
 
         $this->createBlock('iron', array('x' => 1, 'y' => 2, 'z' => 3));
 
-        $expectedBlock = new Block('iron', array('x' => 1, 'y' => 2, 'z' => 3));
+        $expectedBlock = new Block('iron', array('x' => 1, 'y' => 2, 'z' => 3), 0);
+
+        $this->getBlocks()->shouldHaveCount(1);
+        $this->getBlocks()->shouldHaveValue($expectedBlock);
+    }
+
+    function it_lets_us_create_a_block_with_meta_data()
+    {
+        $this->getBlocks()->shouldHaveCount(0);
+
+        $this->createBlock('iron', array('x' => 1, 'y' => 2, 'z' => 3), 5);
+
+        $expectedBlock = new Block('iron', array('x' => 1, 'y' => 2, 'z' => 3), 5);
 
         $this->getBlocks()->shouldHaveCount(1);
         $this->getBlocks()->shouldHaveValue($expectedBlock);
