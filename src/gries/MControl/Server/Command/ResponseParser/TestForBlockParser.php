@@ -46,6 +46,10 @@ class TestForBlockParser implements ResponseParserInterface
 
         preg_match_all($regex, $response, $matches);
 
+        if (!isset($matches[1][0])) {
+            throw new \LogicException(sprintf('Cant handle response: "%s" while parsing a TestForBlockOutput', $response));
+        }
+
         return $matches[1][0];
     }
 }
