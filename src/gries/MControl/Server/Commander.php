@@ -66,12 +66,13 @@ class Commander
         return $this->executeCommand(new Command\SetTime($time));
     }
 
-    public function setBlock($type, array $coordinates)
+    public function setBlock($type, array $coordinates, $meta = 0)
     {
         $this->executeCommand(new Command\SetBlock(
             $type,
             $coordinates,
-            Command\SetBlock::SET_METHOD_REPLACE
+            Command\SetBlock::SET_METHOD_REPLACE,
+            $meta
         ));
     }
 

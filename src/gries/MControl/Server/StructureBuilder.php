@@ -38,6 +38,6 @@ class StructureBuilder
             'z' => $relativeCoordinates['z'] + $startingCoordinates['z'],
         ];
 
-        $this->commander->setBlock($block->getType(), $blockCoordinates);
+        $this->commander->setBlock($block->getType(), $blockCoordinates, $block->getMeta());
     }
 }
