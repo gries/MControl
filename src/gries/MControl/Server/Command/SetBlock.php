@@ -16,21 +16,25 @@ class SetBlock implements Command
 
     protected $method;
 
-    public function __construct($blockType, array $coordinates, $method)
+    protected $meta;
+
+    public function __construct($blockType, array $coordinates, $method, $meta = 0)
     {
         $this->coordinates = $coordinates;
         $this->blockType = $blockType;
         $this->method = $method;
+        $this->meta = $meta;
     }
 
     public function getCommandString()
     {
         return sprintf(
-            'setblock %d %d %d %s 0 %s',
+            'setblock %d %d %d %s %s %s',
             $this->coordinates['x'],
             $this->coordinates['y'],
             $this->coordinates['z'],
             $this->blockType,
+            $this->meta,
             $this->method
         );
     }
