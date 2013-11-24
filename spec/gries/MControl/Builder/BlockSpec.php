@@ -37,4 +37,11 @@ class BlockSpec extends ObjectBehavior
 
         $this->getCoordinate('x')->shouldReturn(1);
     }
+
+    function it_can_be_created_with_a_meta_index()
+    {
+        $this->beConstructedWith('iron_block', array('x' => 1, 'y' => -2, 'z' => 3), 5);
+
+        $this->getMeta()->shouldReturn(5);
+    }
 }
