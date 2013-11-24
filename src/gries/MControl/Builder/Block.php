@@ -16,6 +16,8 @@ class Block
 
     protected $coordinates;
 
+    protected $meta;
+
     /**
      * @param array $coordinates
      */
@@ -40,7 +42,7 @@ class Block
         return $this->type;
     }
 
-    public function __construct($type, array $coordinates)
+    public function __construct($type, array $coordinates, $meta = 0)
     {
         $this->validateCoordinate('x', $coordinates);
         $this->validateCoordinate('y', $coordinates);
@@ -48,6 +50,7 @@ class Block
 
         $this->type = $type;
         $this->coordinates = $coordinates;
+        $this->meta = $meta;
     }
 
     /**
@@ -72,5 +75,10 @@ class Block
     public function getCoordinate($coordinate)
     {
         return $this->coordinates[$coordinate];
+    }
+
+    public function getMeta()
+    {
+        return $this->meta;
     }
 }
