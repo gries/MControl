@@ -12,10 +12,13 @@ class TestForBlock implements Command
 
     protected $coordinates;
 
-    public function __construct(array $coordinates, BlockType $blockType)
+    protected $meta;
+
+    public function __construct(array $coordinates, BlockType $blockType, $meta = 0)
     {
         $this->blockType   = $blockType;
         $this->coordinates = $coordinates;
+        $this->meta = $meta;
     }
 
     public function getCommandString()
@@ -26,7 +29,7 @@ class TestForBlock implements Command
             $this->coordinates['y'],
             $this->coordinates['z'],
             $this->blockType->getName(),
-            $this->blockType->getMeta()
+            $this->meta
         );
     }
 
