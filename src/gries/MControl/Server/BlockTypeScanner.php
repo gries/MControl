@@ -11,6 +11,8 @@ class BlockTypeScanner
 
     protected $repository;
 
+    protected $cache;
+
     public function __construct(Commander $commander, BlockTypeRepository $repository)
     {
         $this->commander  = $commander;
@@ -27,19 +29,29 @@ class BlockTypeScanner
             return $this->detectMeta($coordinates, $dummyType);
         }
 
+        // seach in the cache
+        if (isset($this->cache[$detectedType])) {
+            return $this->detectMeta($coordinates, $this->cache[$detectedType]);
+        }
         // search by name
         if ($type = $this->repository->getByName($detectedType)) {
+            $this->cache[$detectedType] = $type;
+
             return $this->detectMeta($coordinates, $type);
         }
 
         // search by title
         if ($type = $this->repository->getByTitle($detectedType)) {
+            $this->cache[$detectedType] = $type;
+
             return $this->detectMeta($coordinates, $type);
         }
 
         // cant find it so bruteforce
         foreach ($this->repository->getAll() as $type) {
             if (true === $this->commander->testForBlock($coordinates, $type)) {
+                $this->cache[$detectedType] = $type;
+
                 return $this->detectMeta($coordinates, $type);
             }
         }
@@ -47,12 +59,15 @@ class BlockTypeScanner
 
     protected function detectMeta($coordinates, BlockType $type)
     {
-        if (true === $meta = $this->commander->testForBlock($coordinates, $type, 0)) {
-            $type->updateData(array('meta' => 0));
+        $meta = 0;
+
+        $detectedMeta = $this->commander->testForBlock($coordinates, $type, 0);
+
+        if (true !== $detectedMeta && is_numeric($detectedMeta)) {
+            $meta = $detectedMeta;
         }
-        else {
-            $type->updateData(array('meta' => $meta));
-        }
+
+        $type->updateData(array('meta' => $meta));
 
         return $type;
     }
