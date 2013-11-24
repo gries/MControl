@@ -1,6 +1,7 @@
 <?php
 namespace gries\MControl\Server;
 
+use gries\MControl\Builder\BlockType;
 use gries\MControl\Server\Command;
 use gries\MControl\Server\Rcon\RconManager;
 
@@ -72,6 +73,11 @@ class Commander
             $coordinates,
             Command\SetBlock::SET_METHOD_REPLACE
         ));
+    }
+
+    public function testForBlock(array $coordinates, BlockType $type)
+    {
+        return $this->executeCommand(new Command\TestForBlock($coordinates, $type));
     }
 
     /**

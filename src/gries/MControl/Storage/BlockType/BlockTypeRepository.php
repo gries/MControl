@@ -29,6 +29,10 @@ class BlockTypeRepository
     public function getByTitle($title)
     {
         return $this->storage->getByTitle($title);
+    }
 
+    public function getAll()
+    {
+        return $this->storage->getAll();
     }
 }

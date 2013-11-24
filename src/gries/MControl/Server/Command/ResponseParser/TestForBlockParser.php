@@ -1,0 +1,42 @@
+<?php
+
+namespace gries\MControl\Server\Command\ResponseParser;
+
+class TestForBlockParser implements ResponseParserInterface
+{
+
+    /**
+     * Get the Server response
+     *
+     * @param $response
+     *
+     * @return mixed Response could be a string or an array
+     */
+    public function getResponse($response)
+    {
+        // block was detected
+        if (false !== strpos($response, 'Successfully found')) {
+            return true;
+        }
+
+        if (false !== $tilePos = strpos($response, 'is tile.')) {
+            // find format: ... is tile.air.name (expected: somethingelse)
+            $regex = "/is tile.([a-zA-Z0-9_]*).name/";
+
+            $matches = array();
+            preg_match_all($regex, $response, $matches);
+
+            return 'minecraft:' . $matches[1][0];
+        }
+
+        // find format: ... is Wooden Planks (expected: somethingelse)
+        $regex   = "/is ([a-zA-Z0-9_\ ]*) \(expected/";
+        $matches = array();
+
+        preg_match_all($regex, $response, $matches);
+
+        return $matches[1][0];
+
+
+    }
+}

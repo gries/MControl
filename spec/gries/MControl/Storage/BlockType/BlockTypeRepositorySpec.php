@@ -64,4 +64,22 @@ class BlockTypeRepositorySpec extends ObjectBehavior
 
         $this->getByTitle($name)->shouldReturn($blocktype);
     }
+
+    /**
+     * @param gries\MControl\Storage\BlockType\BlockTypeStorageInterface $storage
+     */
+    function it_should_get_all_blocktypes(BlockTypeStorageInterface $storage)
+    {
+        $type1 = new BlockType(array());
+        $type2 = new BlockType(array());
+
+        $storage->getAll()
+            ->shouldBeCalled()
+            ->willReturn(array($type1, $type2))
+        ;
+
+        $this->beConstructedWith($storage);
+
+        $this->getAll()->shouldReturn(array($type1, $type2));
+    }
 }

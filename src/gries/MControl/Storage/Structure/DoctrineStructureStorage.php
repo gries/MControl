@@ -31,4 +31,10 @@ class DoctrineStructureStorage extends DoctrineStorage implements StructureStora
     {
         $this->persist($structure);
     }
+
+    public function remove(Structure $structure)
+    {
+        $this->em->remove($structure);
+        $this->em->flush();
+    }
 }

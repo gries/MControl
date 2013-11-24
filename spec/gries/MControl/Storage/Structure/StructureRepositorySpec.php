@@ -36,6 +36,19 @@ class StructureRepositorySpec extends ObjectBehavior
      * @param gries\MControl\Storage\Structure\StructureStorageInterface $storage
      * @param gries\MControl\Builder\Structure $structure
      */
+    function it_should_remove_a_structure_to_the_storage(StructureStorageInterface $storage, Structure $structure)
+    {
+        $storage->remove($structure)->shouldBeCalled();
+
+        $this->beConstructedWith($storage);
+
+        $this->remove($structure);
+    }
+
+    /**
+     * @param gries\MControl\Storage\Structure\StructureStorageInterface $storage
+     * @param gries\MControl\Builder\Structure $structure
+     */
     function it_should_get_a_structure_by_its_name(StructureStorageInterface $storage, Structure $structure)
     {
         $name = 'somename';

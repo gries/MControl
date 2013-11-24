@@ -37,4 +37,9 @@ class StructureRepository
     {
         return $this->storage->getByName($name);
     }
+
+    public function remove(Structure $structure)
+    {
+        return $this->storage->remove($structure);
+    }
 }

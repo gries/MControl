@@ -41,4 +41,11 @@ interface BlockTypeStorageInterface
      * @return mixed
      */
     public function getByTitle($title);
+
+    /**
+     * Get an array of all blocktypes
+     *
+     * @return array
+     */
+    public function getAll();
 }

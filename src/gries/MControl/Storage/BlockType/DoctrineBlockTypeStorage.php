@@ -47,4 +47,12 @@ class DoctrineBlockTypeStorage extends DoctrineStorage implements BlockTypeStora
             ->findOneBy(array('title' => $title)
         );
     }
+
+    public function getAll()
+    {
+        return $this->em
+            ->getRepository('gries\MControl\Builder\BlockType')
+            ->findAll()
+        ;
+    }
 }
