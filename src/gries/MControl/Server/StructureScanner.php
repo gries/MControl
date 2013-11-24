@@ -2,6 +2,7 @@
 
 namespace gries\MControl\Server;
 
+use gries\MControl\Builder\BlockType;
 use gries\MControl\Builder\Structure;
 
 class StructureScanner
@@ -33,6 +34,10 @@ class StructureScanner
 
                     $type = $this->scanner->detectBlockType($currentCoordinates);
 
+                    // default to air
+                    if (!$type) {
+                        $type = new BlockType(array('name' => 'air', 'meta' => 0));
+                    }
                     $structure->createBlock($type->getName(), array(
                             'x' => $x,
                             'y' => $y,
