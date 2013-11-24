@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Mcontrol : MControl is an easy-to-use minecraft server control library." />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Mcontrol</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/gries/MControl">View on GitHub</a>
+
+          <h1 id="project_title">Mcontrol</h1>
+          <h2 id="project_tagline">MControl is an easy-to-use minecraft server control library.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/gries/MControl/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/gries/MControl/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="mcontrol" class="anchor" href="#mcontrol"><span class="octicon octicon-link"></span></a>MControl</h1>
+
+<p>MControl is a library to controll a minecraft-server via. the rcon protocol.</p>
+
+<p><a href="https://insight.sensiolabs.com/projects/33bb71fa-7445-42bd-a1e4-02f956b73ccc"><img src="https://insight.sensiolabs.com/projects/33bb71fa-7445-42bd-a1e4-02f956b73ccc/big.png" alt="SensioLabsInsight"></a></p>
+
+<p><a href="https://travis-ci.org/gries/MControl"><img src="https://travis-ci.org/gries/MControl.png?branch=master" alt="Build Status"></a></p>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>MControl can be installed via. Composer:</p>
+
+<pre><code>{
+    "require": {
+        "gries/MControl": "dev-master"
+    }
+}
+</code></pre>
+
+<h2>
+<a name="basic-usage" class="anchor" href="#basic-usage"><span class="octicon octicon-link"></span></a>Basic usage</h2>
+
+<pre><code>use gries\MControl\Server\Commander;
+use gries\MControl\Server\Rcon\RconManager;
+
+// create a RconConnection
+$rcon = new RconManager('localhost', 25575, 'p4ssw0rd');
+
+// create a Commander
+$commander = new Commander($rcon);
+
+// set the server-time
+$commander-&gt;setTime('12000');
+
+// listPlayers
+$players = $commander-&gt;listPlayers(); // -&gt; array('playerx', 'playery');
+
+// teleport one player to another
+$commander-&gt;teleport(array('playerx', 'playery'));
+
+// locate a player
+$location = $commander-&gt;locate('playerx');  // -&gt; array('x' =&gt; 157, 'y' =&gt; 50, 'z' =&gt; -54);
+</code></pre>
+
+<h2>
+<a name="building-structures" class="anchor" href="#building-structures"><span class="octicon octicon-link"></span></a>Building structures</h2>
+
+<pre><code>....
+use gries\MControl\Builder\Block;
+use gries\MControl\Builder\Structure;
+use gries\MControl\Server\StructureBuilder;
+...
+
+// create a structure-builder
+$structureBuilder = new StructureBuilder($commander);
+
+// create a new structure
+$structure = new Structure();
+
+// add some blocks
+// in this case build a sand tower that is five blocks high
+for ($i = 0; $i &lt; 5; $i++)
+{
+    $structure-&gt;createBlock('sand', array('x' =&gt; 1, 'y' =&gt; $i, 'z' =&gt; 1));
+}
+
+// add a row of 3 sand blocks on the Y axis
+// starting on 1:1:1
+$structure-&gt;addRow('y', 'sand', 3);
+
+// build it on the server
+$structureBuilder-&gt;build($structure);
+</code></pre>
+
+<h2>
+<a name="converting-images-to-structures" class="anchor" href="#converting-images-to-structures"><span class="octicon octicon-link"></span></a>Converting images to Structures</h2>
+
+<p>To convert images to structures the imagick extension for PHP is required.</p>
+
+<p>The example below will build a structure that is 5 blocks high, and is made of air and leaves.
+Every black pixel will be leaves every white pixel will be air. The structure will be placed on x -&gt; 33, z -&gt; 19</p>
+
+<p>The result can be seen in this video: <a href="https://vimeo.com/79598411">https://vimeo.com/79598411</a></p>
+
+<pre><code>$converter = new ImageToStructureConverter();
+$converter-&gt;setBlackBlockType('leaves');
+$converter-&gt;setWhiteBlockType('air');
+
+$image     = new Imagick('test.png');
+$structure = $converter-&gt;convert($image, 5);
+$structureBuilder-&gt;build($structure,
+    array('x' =&gt; '-33',
+          'y' =&gt; '3',
+          'z' =&gt; '19')
+);
+</code></pre>
+
+<h2>
+<a name="saving-structures-for-further-use" class="anchor" href="#saving-structures-for-further-use"><span class="octicon octicon-link"></span></a>Saving structures for further use</h2>
+
+<p>You can persist structures for later use using the StructureRepository.
+Currently this Repository uses a sqlite database to store the data by default,
+this behavior can be easily changed by creating a custom EntityManager by yourself
+and passing it to the StructureRepositoryFactory.</p>
+
+<pre><code>// bootstrap doctrine
+$entityManager = require_once __DIR__ . '/bootstrap.php';
+
+// create a repository
+$factory = new StructureRepositoryFactory();
+$repository = $factory-&gt;create($entityManager);
+
+// create a new structure
+$structure = new Structure();
+$structure-&gt;createBlock('iron', array('x' =&gt; 1, 'y' =&gt; 1, 'z' =&gt; 1));
+$structure-&gt;setName('greatness');
+
+// save it to the database
+$repository-&gt;add($structure);
+
+// get it from the database
+$repository-&gt;getByName('greatness');
+</code></pre>
+
+<h2>
+<a name="currently-these-commands-are-available-for-the-commander" class="anchor" href="#currently-these-commands-are-available-for-the-commander"><span class="octicon octicon-link"></span></a>Currently these Commands are available for the Commander</h2>
+
+<ul>
+<li>say</li>
+<li>listPlayers</li>
+<li>locatePlayer</li>
+<li>teleport</li>
+<li>give</li>
+<li>setWeather</li>
+<li>setTime</li>
+<li>setBlock</li>
+</ul><h2>
+<a name="running-the-tests" class="anchor" href="#running-the-tests"><span class="octicon octicon-link"></span></a>Running the tests</h2>
+
+<pre><code>bin/phpspec run
+</code></pre>
+
+<h2>
+<a name="contribute" class="anchor" href="#contribute"><span class="octicon octicon-link"></span></a>Contribute!</h2>
+
+<p>Feel free to give me feedback/feature-request/bug-reports via. github issues.
+Or just send me a pull-request :)</p>
+
+<h2>
+<a name="author" class="anchor" href="#author"><span class="octicon octicon-link"></span></a>Author</h2>
+
+<ul>
+<li><a href="http://twitter.com/griesx">Christoph Rosse</a></li>
+</ul><h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>For the full copyright and license information, please view the LICENSE file that was distributed with this source code.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Mcontrol maintained by <a href="https://github.com/gries">gries</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
