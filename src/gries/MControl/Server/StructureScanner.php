@@ -33,9 +33,9 @@ class StructureScanner
                         'y' => $currentY,
                         'z' => $currentZ
                     );
-                    echo implode('-', $currentCoordinates);
+
                     $type = $this->scanner->detectBlockType($currentCoordinates);
-                    echo ":".$type->getName()."\n";
+
                     $structure->createBlock($type->getName(), array(
                         'x' => $x,
                         'y' => $y,
