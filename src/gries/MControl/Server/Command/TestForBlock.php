@@ -12,22 +12,30 @@ class TestForBlock implements Command
 
     protected $coordinates;
 
-    public function __construct(array $coordinates, BlockType $blockType)
+    protected $meta;
+
+    public function __construct(array $coordinates, BlockType $blockType, $meta = null)
     {
         $this->blockType   = $blockType;
         $this->coordinates = $coordinates;
+        $this->meta        = $meta;
     }
 
     public function getCommandString()
     {
-        return sprintf(
-            'testforblock %s %s %s %s %s',
+        $commandString = sprintf(
+            'testforblock %s %s %s %s',
             $this->coordinates['x'],
             $this->coordinates['y'],
             $this->coordinates['z'],
-            $this->blockType->getName(),
-            $this->blockType->getMeta()
+            $this->blockType->getName()
         );
+
+        if (null !== $this->meta) {
+            $commandString .= ' ' . $this->meta;
+        }
+
+        return $commandString;
     }
 
     /**

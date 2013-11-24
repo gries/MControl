@@ -19,13 +19,11 @@ class BlockTypeSpec extends ObjectBehavior
             'id' => 15,
             'name' => 'minecraft:iron_ore',
             'title' => 'Iron Ore',
-            'meta'  => 0
         ));
 
         $this->getId()->shouldBe(15);
         $this->getName()->shouldBe('minecraft:iron_ore');
         $this->getTitle()->shouldBe('Iron Ore');
-        $this->getMeta()->shouldBe(0);
     }
 
     function it_updates_its_data_if_new_data_is_passed()
@@ -34,19 +32,16 @@ class BlockTypeSpec extends ObjectBehavior
             'id' => 15,
             'name' => 'minecraft:iron_ore',
             'title' => 'Iron Ore',
-            'meta' => 0
         ));
 
         $this->updateData(array(
             'id' => 16,
             'name' => 'minecraft:iron',
             'title' => 'Iron',
-            'meta' => 1
         ));
 
         $this->getId()->shouldBe(16);
         $this->getName()->shouldBe('minecraft:iron');
         $this->getTitle()->shouldBe('Iron');
-        $this->getMeta()->shouldBe(1);
     }
 }
