@@ -75,7 +75,7 @@ class Commander
         ));
     }
 
-    public function testForBlock(array $coordinates, BlockType $type, $meta = 0)
+    public function testForBlock(array $coordinates, BlockType $type, $meta = null)
     {
         return $this->executeCommand(new Command\TestForBlock($coordinates, $type, $meta));
     }

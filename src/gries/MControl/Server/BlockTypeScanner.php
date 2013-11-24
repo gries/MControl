@@ -39,7 +39,6 @@ class BlockTypeScanner
 
         // cant find it so bruteforce
         foreach ($this->repository->getAll() as $type) {
-
             if (true === $this->commander->testForBlock($coordinates, $type)) {
                 return $this->detectMeta($coordinates, $type);
             }

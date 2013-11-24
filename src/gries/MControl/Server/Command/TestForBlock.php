@@ -14,23 +14,28 @@ class TestForBlock implements Command
 
     protected $meta;
 
-    public function __construct(array $coordinates, BlockType $blockType, $meta = 0)
+    public function __construct(array $coordinates, BlockType $blockType, $meta = null)
     {
         $this->blockType   = $blockType;
         $this->coordinates = $coordinates;
-        $this->meta = $meta;
+        $this->meta        = $meta;
     }
 
     public function getCommandString()
     {
-        return sprintf(
-            'testforblock %s %s %s %s %s',
+        $command = sprintf(
+            'testforblock %s %s %s %s',
             $this->coordinates['x'],
             $this->coordinates['y'],
             $this->coordinates['z'],
-            $this->blockType->getName(),
-            $this->meta
+            $this->blockType->getName()
         );
+
+        if (null !== $this->meta) {
+            $command .= ' '.$this->meta;
+        }
+
+        return $command;
     }
 
     /**
