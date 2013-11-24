@@ -22,6 +22,8 @@ class BlockType
     /** @Column(type="string", unique=false) **/
     protected $title;
 
+    protected $meta;
+
     public function __construct(array $data)
     {
         $this->updateData($data);
@@ -55,5 +57,14 @@ class BlockType
         if (isset($data['title'])) {
             $this->title = $data['title'];
         }
+
+        if (isset($data['meta'])) {
+            $this->meta = $data['meta'];
+        }
+    }
+
+    public function getMeta()
+    {
+        return $this->meta;
     }
 }
