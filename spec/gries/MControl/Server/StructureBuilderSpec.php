@@ -32,15 +32,17 @@ class StructureBuilderSpec extends ObjectBehavior
         // fixtures
         $block1->getCoordinates()->willReturn(array('x' => 1, 'y' => 1, 'z' => 1));
         $block1->getType()->willReturn('iron_block');
+        $block1->getMeta()->willReturn(1);
 
         $block2->getCoordinates()->willReturn(array('x' => 1, 'y' => 2, 'z' => 1));
         $block2->getType()->willReturn('diamond_block');
+        $block2->getMeta()->willReturn(0);
 
         $structure->getBlocks()->willReturn(array($block1, $block2));
 
         // mocks
-        $commander->setBlock('iron_block', array('x' => 143, 'y' => 55, 'z' => -70))->shouldBeCalled();
-        $commander->setBlock('diamond_block', array('x' => 143, 'y' => 56, 'z' => -70))->shouldBeCalled();
+        $commander->setBlock('iron_block', array('x' => 143, 'y' => 55, 'z' => -70), 1)->shouldBeCalled();
+        $commander->setBlock('diamond_block', array('x' => 143, 'y' => 56, 'z' => -70), 0)->shouldBeCalled();
 
         $this->build($structure, array('x' => 142, 'y' => 54, 'z' => -71));
     }
