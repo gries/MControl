@@ -8,10 +8,13 @@ namespace gries\MControl\Builder;
  *
  * A single block
  *
- * @package gries\MControl\Builder
+ * @package gries\MControl\
+ * @Entity @Table(name="blocks")
  */
 class Block
 {
+	protected $structure;
+
     protected $type;
 
     protected $coordinates;
@@ -52,6 +55,16 @@ class Block
         $this->coordinates = $coordinates;
         $this->meta = $meta;
     }
+
+	/**
+	 * Attach a block to a structure
+	 *
+	 * @param Structure $structure
+	 */
+	public function attachToStructure(Structure $structure)
+	{
+		$this->structureId = $structure->getId();
+	}
 
     /**
      * Check if a coordinate is present and numeric

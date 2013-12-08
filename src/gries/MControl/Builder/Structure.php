@@ -21,6 +21,16 @@ class Structure
     /** @Column(type="string", unique=true) **/
     protected $name;
 
+	/**
+	 * Get the structures id
+	 *
+	 * @return mixed
+	 */
+	public function getId()
+	{
+		return $this->id;
+	}
+
     /**
      * Get all blocks of this structure
      *
