@@ -24,6 +24,15 @@ class BlockType
 
     protected $meta;
 
+    /** @Column(type="string", unique=false, nullable=true) **/
+    protected $colorR;
+
+    /** @Column(type="string", unique=false, nullable=true) **/
+    protected $colorG;
+
+    /** @Column(type="string", unique=false, nullable=true) **/
+    protected $colorB;
+
     public function __construct(array $data)
     {
         $this->updateData($data);
@@ -61,10 +70,21 @@ class BlockType
         if (isset($data['meta'])) {
             $this->meta = $data['meta'];
         }
+
+        if (isset($data['color'])) {
+            $this->colorR = $data['color'][0];
+            $this->colorG = $data['color'][1];
+            $this->colorB = $data['color'][2];
+        }
     }
 
     public function getMeta()
     {
         return $this->meta;
+    }
+
+    public function color()
+    {
+        return sprintf('%s%s%s', $this->colorR, $this->colorG, $this->colorB);
     }
 }

@@ -49,4 +49,17 @@ class BlockTypeSpec extends ObjectBehavior
         $this->getTitle()->shouldBe('Iron');
         $this->getMeta()->shouldBe(1);
     }
+
+    function it_sets_its_color_values()
+    {
+        $this->beConstructedWith(array(
+            'id' => 15,
+            'name' => 'minecraft:iron_ore',
+            'title' => 'Iron Ore',
+            'meta'  => 0,
+            'color' => ['3c', '3d', '3e']
+        ));
+
+        $this->color()->shouldBe('3c3d3e');
+    }
 }
