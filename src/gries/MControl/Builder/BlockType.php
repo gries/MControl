@@ -76,6 +76,8 @@ class BlockType
             $this->colorG = $data['color'][1];
             $this->colorB = $data['color'][2];
         }
+
+        return $this;
     }
 
     public function getMeta()

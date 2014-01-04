@@ -4,19 +4,17 @@ namespace gries\MControl\Builder;
 
 class ImageToStructureConverter
 {
-    protected $whiteBlockType;
+    /**
+     * @var BlockTypeColorMapping
+     */
+    protected $blockTypeColorMapping;
 
-    protected $blackBlockType;
-
-
-    public function setWhiteBlockType($type)
+    /**
+     * @param BlockTypeColorMapping $BlockTypeColorMapping
+     */
+    public function __construct(BlockTypeColorMapping $blockTypeColorMapping)
     {
-        $this->whiteBlockType = $type;
-    }
-
-    public function setBlackBlockType($type)
-    {
-        $this->blackBlockType = $type;
+        $this->blockTypeColorMapping = $blockTypeColorMapping;
     }
 
     /**
@@ -28,20 +26,17 @@ class ImageToStructureConverter
      */
     public function convert(\Imagick $image, $heigh = 1)
     {
-        $structure = new Structure();
-        $pixelIterator  = $image->getPixelIterator();
+        $structure     = new Structure();
+        $pixelIterator = $image->getPixelIterator();
 
-        for ($y = 1; $y <= $heigh; $y++)
-        {
+        for ($y = 1; $y <= $heigh; $y++) {
             $z = 1;
             $x = 1;
 
-            foreach ($pixelIterator as $pixels)
-            {
+            foreach ($pixelIterator as $pixels) {
                 $rowZ = $z;
 
-                foreach ($pixels as $pixel)
-                {
+                foreach ($pixels as $pixel) {
                     $this->addBlockForPixel($pixel, $structure, $x, $y, $rowZ);
                     $rowZ++;
                 }
@@ -67,13 +62,16 @@ class ImageToStructureConverter
     protected function addBlockForPixel(\ImagickPixel $pixel, Structure $structure, $x, $y, $z)
     {
         $color = $pixel->getColor();
-        if ($color['r'] < 200 && $color['g'] < 200 && $color['b'] < 200)
-        {
-            $structure->createBlock($this->blackBlockType, array('x' => $x, 'y' => $y, 'z' => $z));
+
+        $type = $this->blockTypeColorMapping->getBlockTypeForRgbColor($color['r'], $color['g'], $color['b']);
+
+        if (null === $type) {
+            return;
         }
-        else
-        {
-            $structure->createBlock($this->whiteBlockType, array('x' => $x, 'y' => $y, 'z' => $z));
-        }
+
+        // if meta is null it becomes 0
+        $meta = (int)$type->getMeta();
+
+        $structure->createBlock($type->getName(), array('x' => $x, 'y' => $y, 'z' => $z), $meta);
     }
 }
