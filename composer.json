@@ -13,7 +13,7 @@
     "require": {
         "monolog/monolog": "~1.6",
         "doctrine/orm": "~2.4",
-        "gries/PHP-Source-Query-Class": "dev-master",
+        "gries/php-source-query-class": "dev-master",
         "symfony/dom-crawler": "~2.4"
     },
     "require-dev": {
