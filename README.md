@@ -15,7 +15,8 @@ MControl can be installed via. Composer:
     {
         "require": {
             "gries/MControl": "dev-master"
-        }
+        },
+         "minimum-stability": "dev"
     }
 
 Basic usage
