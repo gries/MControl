@@ -10,27 +10,10 @@
             "email":     "christoph@rosse.at"
         }
     ],
-    "repositories": [
-     {
-            "type":"package",
-            "package": {
-                "name": "xPaw/PHP-Source-Query-Class",
-                "version":"master",
-                "source": {
-                    "url": "https://github.com/xPaw/PHP-Source-Query-Class.git",
-                    "type": "git",
-                    "reference":"master"
-                },
-                "autoload": {
-                    "classmap": ["/"]
-                }
-            }
-        }
-    ],
     "require": {
         "monolog/monolog": "~1.6",
         "doctrine/orm": "~2.4",
-        "xPaw/PHP-Source-Query-Class": "master",
+        "gries/PHP-Source-Query-Class": "master",
         "symfony/dom-crawler": "~2.4"
     },
     "require-dev": {
