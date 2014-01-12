@@ -4,7 +4,7 @@ namespace spec\gries\MControl\Server\Command;
 
 use PhpSpec\ObjectBehavior;
 
-class GiveSpecSpec extends ObjectBehavior
+class GiveSpec extends ObjectBehavior
 {
     function let()
     {
