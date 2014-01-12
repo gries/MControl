@@ -108,7 +108,7 @@ class ItemDataLoader
             } else {
                 $item['color'] = null;
             }
-print_r($item);
+
             $items[] = $item;
         }
 
