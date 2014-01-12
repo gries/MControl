@@ -76,6 +76,11 @@ class Commander
         ));
     }
 
+    public function raw($command)
+    {
+        return $this->executeCommand(new Command\Raw($command));
+    }
+
     public function testForBlock(array $coordinates, BlockType $type, $meta = null)
     {
         return $this->executeCommand(new Command\TestForBlock($coordinates, $type, $meta));
@@ -87,7 +92,7 @@ class Commander
      *
      * @param Command $command
      */
-    protected function executeCommand(Command\Command $command)
+    protected function executeCommand(Command\CommandInterface $command)
     {
         try {
 
