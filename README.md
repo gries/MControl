@@ -42,6 +42,9 @@ Basic usage
     // locate a player
     $location = $commander->locate('playerx');  // -> array('x' => 157, 'y' => 50, 'z' => -54);
 
+    // execute a raw command
+    $response = $commander->raw('my custom command string');
+
 Building structures
 -------------------
 
@@ -128,6 +131,7 @@ Currently these Commands are available for the Commander
 - setWeather
 - setTime
 - setBlock
+- raw
 
 
 Running the tests
