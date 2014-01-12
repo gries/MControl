@@ -11,8 +11,8 @@ class RawSpec extends ObjectBehavior
     {
         $this->beConstructedWith('my custom command 1 2 3');
 
+        $this->shouldImplement('gries\MControl\Server\Command\CommandInterface');
         $this->shouldHaveType('gries\MControl\Server\Command\Raw');
-        $this->shouldImplement('gries\\MControl\\Server\\Command\\CommandInterfacee');
     }
 
     function it_creates_correct_command_string()
