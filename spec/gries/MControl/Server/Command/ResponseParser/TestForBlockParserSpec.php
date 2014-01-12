@@ -3,7 +3,6 @@
 namespace spec\gries\MControl\Server\Command\ResponseParser;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class TestForBlockParserSpec extends ObjectBehavior
 {

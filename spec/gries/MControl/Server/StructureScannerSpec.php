@@ -7,7 +7,7 @@ use gries\MControl\Builder\BlockType;
 use gries\MControl\Builder\Structure;
 use gries\MControl\Server\BlockTypeScanner;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
+
 
 class StructureScannerSpec extends ObjectBehavior
 {

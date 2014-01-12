@@ -5,7 +5,7 @@ namespace spec\gries\MControl\Storage\BlockType;
 use gries\MControl\Builder\BlockType;
 use gries\MControl\Storage\BlockType\BlockTypeStorageInterface;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
+
 
 class BlockTypeRepositorySpec extends ObjectBehavior
 {

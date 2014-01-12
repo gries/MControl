@@ -6,7 +6,7 @@ use gries\MControl\Builder\BlockType;
 use gries\MControl\Server\Commander;
 use gries\MControl\Storage\BlockType\BlockTypeRepository;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
+
 
 class BlockTypeScannerSpec extends ObjectBehavior
 {

@@ -4,7 +4,7 @@ namespace spec\gries\MControl\Builder;
 
 use gries\MControl\Builder\BlockType;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
+
 
 class BlockTypeColorMappingSpec extends ObjectBehavior
 {

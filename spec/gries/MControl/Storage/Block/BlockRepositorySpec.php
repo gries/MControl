@@ -6,7 +6,7 @@ use gries\MControl\Builder\Block;
 use gries\MControl\Builder\Structure;
 use gries\MControl\Storage\Block\BlockStorageInterface;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
+
 
 class BlockRepositorySpec extends ObjectBehavior
 {

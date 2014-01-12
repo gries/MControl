@@ -5,7 +5,7 @@ namespace spec\gries\MControl\Storage;
 use gries\MControl\Builder\Structure;
 use gries\MControl\Storage\Structure\StructureStorageInterface;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
+
 
 class StructureRepositorySpec extends ObjectBehavior
 {

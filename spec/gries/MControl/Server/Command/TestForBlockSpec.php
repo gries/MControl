@@ -4,7 +4,6 @@ namespace spec\gries\MControl\Server\Command;
 
 use gries\MControl\Builder\BlockType;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class TestForBlockSpec extends ObjectBehavior
 {

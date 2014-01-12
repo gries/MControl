@@ -4,7 +4,7 @@ namespace spec\gries\MControl\Storage;
 
 use Doctrine\ORM\EntityManager;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
+
 
 class DoctrineStorageSpec extends ObjectBehavior
 {
