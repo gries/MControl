@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "4ebbb9daeb865d4303a658d73ae1c7d3",
+    "hash": "0164a8db3cac32372057be94c9002a48",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -569,16 +569,16 @@
         },
         {
             "name": "gries/php-source-query-class",
-            "version": "0.0.1",
+            "version": "0.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/gries/PHP-Source-Query-Class.git",
-                "reference": "d38f53ce4e7b9c2717a37424438123deea6978f7"
+                "reference": "c5bb372a43f1a141b2f3d567415c1bef4949a4b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gries/PHP-Source-Query-Class/zipball/d38f53ce4e7b9c2717a37424438123deea6978f7",
-                "reference": "d38f53ce4e7b9c2717a37424438123deea6978f7",
+                "url": "https://api.github.com/repos/gries/PHP-Source-Query-Class/zipball/c5bb372a43f1a141b2f3d567415c1bef4949a4b3",
+                "reference": "c5bb372a43f1a141b2f3d567415c1bef4949a4b3",
                 "shasum": ""
             },
             "type": "library",
@@ -592,7 +592,7 @@
                 "C-BY-NC-SA-3.0"
             ],
             "description": "Forked Repo to improve Mincraft-Support",
-            "time": "2014-01-11 11:54:09"
+            "time": "2014-01-12 19:40:32"
         },
         {
             "name": "monolog/monolog",
