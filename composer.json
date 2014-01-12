@@ -1,6 +1,6 @@
 {
     "name":         "gries/mcontrol",
-    "description":  "PHP Library to controll a running Minecraft-Server",
+    "description":  "PHP Library to control a running Minecraft-Server",
     "license":      "MIT",
     "keywords":     ["Minecraft", "Admin"],
     "type":         "library",
