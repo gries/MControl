@@ -126,9 +126,6 @@ class ItemDataLoader
             return false;
         }
         $img = @imagecreatefromstring(file_get_contents($imageFile));
-        // Andres mentioned in the comments the above line only loads jpegs,
-        // and suggests that to load any file type you can use this:
-        // $img = @imagecreatefromstring(file_get_contents($imageFile));
 
         if(!$img)
         {

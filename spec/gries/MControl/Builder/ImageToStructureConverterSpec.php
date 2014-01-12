@@ -3,6 +3,7 @@
 namespace spec\gries\MControl\Builder;
 
 use gries\MControl\Builder\BlockType;
+use gries\MControl\Builder\BlockTypeColorMapping;
 use gries\MControl\Builder\Structure;
 use PhpSpec\ObjectBehavior;
 
@@ -18,10 +19,11 @@ class ImageToStructureConverterSpec extends ObjectBehavior
         $this->shouldHaveType('gries\MControl\Builder\ImageToStructureConverter');
     }
 
+
     /**
      * @param gries\MControl\Builder\BlockTypeColorMapping $blockTypeColorMapping
      */
-    function it_should_create_a_structure_based_on_a_Imagick_object($blockTypeColorMapping)
+    function it_should_create_a_structure_based_on_a_Imagick_object(BlockTypeColorMapping $blockTypeColorMapping)
     {
         $blackBlockType = new BlockType(array('name' => 'coal_block'));
         $blockTypeColorMapping
@@ -55,7 +57,7 @@ class ImageToStructureConverterSpec extends ObjectBehavior
     /**
      * @param gries\MControl\Builder\BlockTypeColorMapping $blockTypeColorMapping
      */
-    function it_creates_multiple_levels_of_the_image_depending_on_the_given_heigh($blockTypeColorMapping)
+    function it_creates_multiple_levels_of_the_image_depending_on_the_given_heigh(BlockTypeColorMapping $blockTypeColorMapping)
     {
         $blackBlockType = new BlockType(array('name' => 'coal_block'));
         $blockTypeColorMapping

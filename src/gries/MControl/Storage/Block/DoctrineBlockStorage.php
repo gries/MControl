@@ -4,7 +4,6 @@ namespace gries\MControl\Storage\BlockType;
 
 use gries\MControl\Builder\BlockType;
 use gries\MControl\Builder\Structure;
-use gries\MControl\Storage\BlockType\BlockTypeStorageInterface;
 use gries\MControl\Storage\DoctrineStorage;
 
 class DoctrineBlockStorage extends DoctrineStorage implements BlockStorageInterface

@@ -2,12 +2,17 @@
 
 namespace spec\gries\MControl\Storage\Structure;
 
+use Doctrine\ORM\EntityManager;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 class DoctrineStructureStorageSpec extends ObjectBehavior
 {
-    function let($entityManager)
+
+    /**
+     * @param Doctrine\ORM\EntityManager $entityManager
+     */
+    function let(EntityManager $entityManager)
     {
         $entityManager->beADoubleOf('Doctrine\ORM\EntityManager');
         $this->beConstructedWith($entityManager);
