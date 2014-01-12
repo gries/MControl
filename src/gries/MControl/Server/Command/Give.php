@@ -2,7 +2,7 @@
 
 namespace gries\MControl\Server\Command;
 
-class Give implements Command
+class Give implements CommandInterface
 {
     protected $player;
 

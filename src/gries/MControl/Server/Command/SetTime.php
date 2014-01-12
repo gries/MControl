@@ -2,7 +2,7 @@
 
 namespace gries\MControl\Server\Command;
 
-class SetTime implements Command
+class SetTime implements CommandInterface
 {
     protected $time;
 

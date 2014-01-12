@@ -2,7 +2,7 @@
 
 namespace gries\MControl\Server\Command;
 
-class SetBlock implements Command
+class SetBlock implements CommandInterface
 {
     const SET_METHOD_KEEP = 'keep';
 

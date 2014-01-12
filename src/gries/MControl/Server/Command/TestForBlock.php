@@ -6,7 +6,7 @@ use gries\MControl\Builder\BlockType;
 use gries\MControl\Server\Command\ResponseParser\ResponseParserInterface;
 use gries\MControl\Server\Command\ResponseParser\TestForBlockParser;
 
-class TestForBlock implements Command
+class TestForBlock implements CommandInterface
 {
     protected $blockType;
 

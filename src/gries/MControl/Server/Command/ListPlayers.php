@@ -5,7 +5,7 @@ use gries\MControl\Server\Command\ResponseParser\ListPlayersParser;
 /**
  * Represents a Say Command that shows a Message to all Players on the Server
  */
-class ListPlayers implements Command
+class ListPlayers implements CommandInterface
 {
     /**
      * (non-PHPdoc)

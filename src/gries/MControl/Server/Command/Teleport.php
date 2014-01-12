@@ -4,7 +4,7 @@ namespace gries\MControl\Server\Command;
 /**
  * Represents a "TP" Command that teleports a player to another player or some given coordinates
  */
-class Teleport implements Command
+class Teleport implements CommandInterface
 {
     public function __construct(array $subjects)
     {

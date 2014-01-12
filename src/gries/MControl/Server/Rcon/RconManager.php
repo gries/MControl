@@ -3,6 +3,7 @@
 namespace gries\MControl\Server\Rcon;
 
 use gries\MControl\Server\Command\Command;
+use gries\MControl\Server\Command\CommandInterface;
 
 class RconManager
 {
@@ -97,11 +98,11 @@ class RconManager
     /**
      * Connect to the server and send a command
      *
-     * @param Command $command
+     * @param \gries\MControl\Server\Command\Command|\gries\MControl\Server\Command\CommandInterface $command
      *
      * @return bool|mixed|string
      */
-    public function execute(Command $command)
+    public function execute(CommandInterface $command)
     {
         $this->rcon->SetRconPassword($this->password);
 

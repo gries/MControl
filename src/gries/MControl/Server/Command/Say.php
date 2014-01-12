@@ -4,7 +4,7 @@ namespace gries\MControl\Server\Command;
 /**
  * Represents a Say Command that shows a Message to all Players on the Server
  */
-class Say implements Command
+class Say implements CommandInterface
 {
     public function __construct($text)
     {

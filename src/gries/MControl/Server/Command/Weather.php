@@ -2,7 +2,7 @@
 
 namespace gries\MControl\Server\Command;
 
-class Weather implements Command
+class Weather implements CommandInterface
 {
     protected $type;
 
