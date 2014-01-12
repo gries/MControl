@@ -26,6 +26,11 @@ class LocatePlayerParser implements ResponseParserInterface
         $coordinates = substr($response, $toPos+2);
 
         $coordinatesArray = explode(',', $coordinates);
+
+        if (3 != count($coordinatesArray)) {
+            return null;
+        }
+
         $filteredCoordinates = array_map('intval', $coordinatesArray);
 
         return array_combine(array('x', 'y', 'z'), $filteredCoordinates);
