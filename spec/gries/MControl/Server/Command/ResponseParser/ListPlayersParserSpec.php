@@ -1,14 +1,14 @@
 <?php
 
-namespace spec\gries\MControl\Server\Command\LogResponseParser;
+namespace spec\gries\MControl\Server\Command\ResponseParser;
 
-use PHPSpec\ObjectBehavior;
+use PhpSpec\ObjectBehavior;
 
 class ListPlayersParserSpec extends ObjectBehavior
 {
     function it_should_be_initializable()
     {
-        $this->shouldHaveType('gries\MControl\Server\Command\LogResponseParser\ListPlayersParser');
+        $this->shouldHaveType('gries\MControl\Server\Command\ResponseParser\ListPlayersParser');
     }
 
     function it_should_parse_player_names_from_log_lines()
