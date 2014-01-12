@@ -30,7 +30,7 @@ class TestForBlockParser implements ResponseParserInterface
             return $matches[1][0];
         }
 
-        if (false !== $tilePos = strpos($response, 'is tile.')) {
+        if (false !== strpos($response, 'is tile.')) {
             // find format: ... is tile.air.name (expected: somethingelse)
             $regex = "/is tile.([a-zA-Z0-9_]*).name/";
 
